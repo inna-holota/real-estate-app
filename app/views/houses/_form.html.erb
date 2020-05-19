@@ -1,0 +1,57 @@
+<%= form_with(model: house, local: true) do |form| %>
+  <% if house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+        <% house.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :owner %>
+    <%= form.text_field :owner, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rooms %>
+    <%= form.number_field :rooms, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sqmt %>
+    <%= form.number_field :sqmt, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :floors %>
+    <%= form.number_field :floors, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :air_cond %>
+    <%= form.check_box :air_cond, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :picture %>
+    <%= form.file_field :picture, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Save', class: 'btn btn-secondary' %>
+  </div>
+<% end %>

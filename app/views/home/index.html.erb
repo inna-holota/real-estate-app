@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<h4>If you are a manager, you can add new assets via:</h4>
+<%= link_to 'Add new House', houses_path, class: 'btn btn-success' %>
+<%= link_to 'Add new Complex Building', complex_buildings_path, class: 'btn btn-success' %>
+<%= link_to 'Add new Commercial Unit', commercial_units_path, class: 'btn btn-success' %>
+
+<h1>Assets</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Owner</th>
+      <th>Address</th>
+      <th>Sqmt</th>
+      <th>Price</th>
+      <th>Type</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assets.each do |asset| %>
+      <tr>
+        <td><%= asset.owner %></td>
+        <td><%= asset.address %></td>
+        <td><%= asset.sqmt %></td>
+        <td><%= asset.price %></td>
+        <td><%= asset.table_name.camelize.singularize %></td>
+        <td><%= asset.created_at %></td>
+        <td>
+          <% if asset.table_name == 'houses' %>
+            <%= link_to 'Buy', buy_asset_path(asset), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

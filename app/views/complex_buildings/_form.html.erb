@@ -1,0 +1,47 @@
+<%= form_with(model: complex_building, local: true) do |form| %>
+  <% if complex_building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complex_building.errors.count, "error") %> prohibited this complex_building from being saved:</h2>
+
+      <ul>
+        <% complex_building.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :owner %>
+    <%= form.text_field :owner, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :units %>
+    <%= form.number_field :units, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sqmt %>
+    <%= form.number_field :sqmt, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :picture %>
+    <%= form.file_field :picture, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'btn btn-secondary' %>
+  </div>
+<% end %>
